@@ -29,7 +29,6 @@ export function TopBar() {
       <TextContainer>
         <TextUserName>Yassin Leclercq</TextUserName>
       </TextContainer>
-      <Button borderColor="#FFCA00" colorText="#FFCA00" text="Log Out" />
     </CardContainer>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styled from "styled-components/native";
 import { LoginForm } from "../components/organisms/LoginForm";
@@ -8,11 +8,12 @@ const LoginScreenContainer = styled.SafeAreaView`
   width: 100%;
   display: flex;
   align-items: center;
+  background-color: #ebebeb;
 `;
 
 const ImageContainer = styled.View`
-  height: 100px;
-  width: 100px;
+  height: 120px;
+  width: 120px;
   display: flex;
   margin: 10% 5%;
 `;
@@ -27,22 +28,20 @@ const FormContainer = styled.View`
 `;
 
 const LinkRegister = styled.Text`
-  margin: 3%;
+  margin: 5%;
   color: #ffca00;
   font-weight: bold;
+  text-decoration: underline #ffca00;
 `;
 
 export function LoginScreen({ navigation }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   return (
     <LoginScreenContainer>
       <ImageContainer>
         <LogoImage source={require("../assets/origami-logo-grey.png")} />
       </ImageContainer>
       <FormContainer>
-        <LoginForm />
+        <LoginForm navigation={navigation} />
       </FormContainer>
       <LinkRegister
         onPress={() => {

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
-import { Feather } from "@expo/vector-icons";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 // Screen
 import { HomeScreen } from "../screens/HomeScreen";
@@ -9,9 +10,14 @@ import { ProfilScreen } from "../screens/ProfilScreen";
 import { SearchScreen } from "../screens/SearchScreen";
 import { LogoTitle } from "../components/molecules/LogoTitle";
 
+import { AuthContext } from "../components/context/AuthContext";
+
 const Tab = createBottomTabNavigator();
 
 export function MainScreen() {
+  const navigation = useNavigation();
+  const { dispatch } = useContext(AuthContext);
+
   const getTabBarVisibility = (route) => {
     const routeName = getFocusedRouteNameFromRoute(route);
     if (routeName === "Profil") {
@@ -45,7 +51,20 @@ export function MainScreen() {
       <Tab.Screen
         name="Home"
         component={HomeScreen}
-        options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
+        options={{
+          headerRight: () => (
+            <MaterialCommunityIcons
+              size={20}
+              name="logout"
+              color="#FFCA00"
+              onPress={() => {
+                dispatch({ type: "LOGOUT" });
+                navigation.navigate("LoginScreen");
+              }}
+            />
+          ),
+          headerTitle: (props) => <LogoTitle {...props} />,
+        }}
       />
       <Tab.Screen
         name="Profil"

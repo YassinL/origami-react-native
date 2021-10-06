@@ -17,9 +17,9 @@ export const ButtonText = styled.Text`
   color: ${(props) => props.colorText};
 `;
 
-export function Button({ onPressCategory, borderColor, text, colorText }) {
+export function Button({ onPress, borderColor, text, colorText }) {
   return (
-    <ButtonContainer onPress={onPressCategory} borderColor={borderColor}>
+    <ButtonContainer onPress={onPress} borderColor={borderColor}>
       <ButtonText colorText={colorText}>{text}</ButtonText>
     </ButtonContainer>
   );

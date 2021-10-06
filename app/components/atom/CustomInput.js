@@ -9,8 +9,7 @@ const InputContainer = styled.View`
 const Label = styled.Text``;
 
 const Input = styled.TextInput`
-  background-color: lightgrey;
-  margin: 4% 0 0 0;
+  margin: 4% 0;
   padding: 10px 5px;
 `;
 
@@ -22,6 +21,7 @@ export function CustomInput({
   placeholder,
   onChangeText,
   secureTextEntry,
+  style,
 }) {
   return (
     <InputContainer>
@@ -30,6 +30,8 @@ export function CustomInput({
         placeholder={placeholder}
         onChangeText={onChangeText}
         secureTextEntry={secureTextEntry}
+        style={style}
+        clearButtonMode="while-editing"
       />
       <TextError>{error && error.message}</TextError>
     </InputContainer>

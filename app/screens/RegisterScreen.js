@@ -2,19 +2,21 @@ import React from "react";
 
 import styled from "styled-components/native";
 import { RegisterForm } from "../components/organisms/RegisterForm";
+import { Feather } from "@expo/vector-icons";
 
 const RegisterScreenContainer = styled.SafeAreaView`
   height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
+  background-color: #ebebeb;
 `;
 
 const ImageContainer = styled.View`
-  height: 100px;
-  width: 100px;
+  height: 120px;
+  width: 120px;
   display: flex;
-  margin: 10% 5%;
+  margin: 5% 5% 1% 5%;
 `;
 
 const LogoImage = styled.Image`
@@ -26,14 +28,28 @@ const FormContainer = styled.View`
   width: 100%;
 `;
 
-export function RegisterScreen() {
+const ArrowContainer = styled.View`
+  position: absolute;
+  left: 5px;
+  top: 40px;
+`;
+
+export function RegisterScreen({ navigation }) {
   return (
     <RegisterScreenContainer>
+      <ArrowContainer>
+        <Feather
+          name="chevron-left"
+          color="#ffca00"
+          size={30}
+          onPress={() => navigation.navigate("LoginScreen")}
+        />
+      </ArrowContainer>
       <ImageContainer>
         <LogoImage source={require("../assets/origami-logo-grey.png")} />
       </ImageContainer>
       <FormContainer>
-        <RegisterForm />
+        <RegisterForm navigation={navigation} />
       </FormContainer>
     </RegisterScreenContainer>
   );
